@@ -1,0 +1,67 @@
+{% extends 'layout/base.html' %}
+
+
+{% block css %}
+<style>
+    body {
+        background-color: #eff0ed;
+    }
+
+    main {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+    }
+</style>
+{% endblock css %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-lg-4 mx-auto">
+            <form method="post" class="card shadow-lg">
+                {% csrf_token %}
+                <div class="card-header text-center bg-dark text-light py-3">
+                    <h3>Create New Account</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control form-control-lg" name="username" id="username"
+                            aria-describedby="userHelp" placeholder="Username" />
+                        <small id="userHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control form-control-lg" name="email" id="email"
+                            aria-describedby="emailHelpId" placeholder="abc@mail.com" />
+                        <small id="emailHelpId" class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control form-control-lg" name="password" id="password"
+                            aria-describedby="passHelp" placeholder="password" />
+                        <small id="passHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpassword" class="form-label">Confrim Password</label>
+                        <input type="password" class="form-control form-control-lg" name="cpassword" id="cpassword"
+                            aria-describedby="cpassHelp" placeholder="password" />
+                        <small id="cpassHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="d-grid ">
+                        <button class="btn btn-primary btn-lg">
+                            Create account
+                        </button>
+                        <div class="p-3 d-flex fw-bold fs-4 mx-auto">
+                            Already have account? <a href="{% url 'login' %}" class="nav-link text-primary">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

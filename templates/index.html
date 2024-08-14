@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+
+
+{% block css %}
+<style>
+    main {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+    }
+</style>
+{% endblock css %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="display-1">Authentication Project</h1>
+    {% if user.is_authenticated %}
+    <h3>Welcome {{user.username}} </h3>
+    <a class="btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a class="btn btn-outline-dark" href="{% url 'register' %}">REGISTER</a>
+    <a class="btn btn-outline-dark" href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
+{% endblock content %}
