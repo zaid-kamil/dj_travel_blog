@@ -8,5 +8,23 @@
 
 {% block content %}
     
+    {% for item in articles %}
+        <div class="container my-2">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="{{item.image.url}}" alt="{{item.title}}" 
+                    class="rounded-2" height="200" width="200"/>
+                </div>
+                <div class="col">
+                    <h2>{{item.title}}</h2>
+                    <p>
+                        {{item.content|truncatechars:150}}
+                    </p>
+                    <a href="{% url 'article' item.id %}">Read Article</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        
 {% endblock content %}
     

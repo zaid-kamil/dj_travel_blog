@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
-
+from .models import Article
 # Create your views here.
 def blog_list_view(request):
+
     return render(
         request,
-        'blog_list.html'
+        'blog_list.html',
+        context={
+            'articles': Article.objects.all()
+        }
     )
 
 def article_view(request, id):
