@@ -2,11 +2,42 @@
 
 
 {% block css %}
-    
+<style>
+    #hero-img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+    }
+</style>
 {% endblock css %}
-    
+
 
 {% block content %}
-    
+<div class="container-fluid px-0">
+    <img src="{{article.image.url}}" alt="hero" height="500" id="hero-img">
+</div>
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1>{{article.title}}</h1>
+            <time class="badge text-primary rounded-pill">
+                {{article.created_at}}
+            </time>
+            <p>
+                {{article.content|linebreaksbr}}
+            </p>
+            <div class="d-flex">
+                <a class="btn btn-primary me-2"
+                    href="{% url 'edit_article' article.id %}">
+                    Edit
+                </a>
+                <a class="btn btn-danger"
+                    href="{% url 'delete_article' article.id %}">
+                    Delete
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock content %}
-    
