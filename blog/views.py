@@ -56,4 +56,10 @@ def add_article_view(request):
     )
 
 def delete_article_view(request, id):
+    try:
+        article = Article.objects.get(id=id)
+        article.delete()
+    except Article.DoesNotExist:
+        print('Article does not exist')
+        pass
     return redirect('blog_list')

@@ -26,18 +26,21 @@
             <p>
                 {{article.content|linebreaksbr}}
             </p>
-            <div class="d-flex">
-                <a class="btn btn-primary me-2"
-                    href="{% url 'edit_article' article.id %}">
-                    Edit
-                </a>
-                <a class="btn btn-danger"
-                    href="{% url 'delete_article' article.id %}">
-                    Delete
-                </a>
-            </div>
+            {% if user.is_authenticated %}
+                {% if article.author == user %}
+                <div class="d-flex">
+                    <a class="btn btn-primary me-2"
+                        href="{% url 'edit_article' article.id %}">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger"
+                        href="{% url 'delete_article' article.id %}">
+                        Delete
+                    </a>
+                </div>
+                {% endif %}
+            {% endif %}
         </div>
-
     </div>
 </div>
 {% endblock content %}

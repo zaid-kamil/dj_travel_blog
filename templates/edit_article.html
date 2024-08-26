@@ -1,9 +1,24 @@
 {% extends 'layout/base.html' %}
 
 
-{% block css %}    
+{% block css %}
+
 {% endblock css %}
 
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center">Edit Article</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary">
+                    Update Article
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
